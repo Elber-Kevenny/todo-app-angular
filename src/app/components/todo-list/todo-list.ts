@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, input, Input, Output} from '@angular/core';
+import { Todo } from '../../app';
 
 @Component({
   selector: 'app-todo-list',
@@ -6,4 +7,14 @@ import { Component } from '@angular/core';
   templateUrl: './todo-list.html',
   styleUrl: './todo-list.scss',
 })
-export class TodoList {}
+export class TodoList {
+  @Input() listaTarefas: Todo[] = []
+  @Input() isCompleted: boolean = false;
+
+
+  @Output() handleCompleted = new EventEmitter<boolean>();
+
+  marcarTarefa() {
+    this.handleCompleted.emit(!this.isCompleted)
+  }
+}
