@@ -9,12 +9,11 @@ import { Todo } from '../../app';
 })
 export class TodoList {
   @Input() listaTarefas: Todo[] = []
-  @Input() isCompleted: boolean = false;
 
 
-  @Output() handleCompleted = new EventEmitter<boolean>();
+  @Output() handleCompleted = new EventEmitter<number>();
 
-  marcarTarefa() {
-    this.handleCompleted.emit(!this.isCompleted)
+  marcarTarefa(id: number) {
+    this.handleCompleted.emit(id)
   }
 }

@@ -29,7 +29,7 @@
     </header>
 
 
-    <app-todo-list [listaTarefas]="tarefas" [isCompleted]="isCompleted" (handleCompleted)="handleCompleted($event)"></app-todo-list>
+    <app-todo-list [listaTarefas]="tarefas"  (handleCompleted)="handleCompleted($event)"></app-todo-list>
     <!-- Hide the footer if there are no todos -->
     <footer class="todoapp__footer" data-cy="Footer">
       <span class="todo-count" data-cy="TodosCounter">

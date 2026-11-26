@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { TodoList } from './components/todo-list/todo-list';
 import { FormsModule } from '@angular/forms';
 export interface Todo {
+  id: number;
   name: string;
   completed: boolean;
 }
@@ -28,12 +29,19 @@ export class App {
   adicionarTarefa() {
     if (this.tarefaDigitada.trim() === '') return;
 
-    this.tarefas.push({ name: this.tarefaDigitada, completed: false });
+    this.tarefas.push({id: this.tarefas.length === 0 ? 1 : this.tarefas.length + 1 , name: this.tarefaDigitada, completed: false });
 
     this.tarefaDigitada = '';
   }
 
-  handleCompleted() {
-    !this.tarefa;
+  handleCompleted(id: number) {
+  this.tarefas = this.tarefas.map((tarefa) => {
+      if (id === tarefa.id) {
+        return { ...tarefa, completed: !tarefa.completed }
+      } else {
+        return tarefa
+      }
+    })
+
   }
 }
